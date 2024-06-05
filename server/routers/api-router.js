@@ -30,8 +30,8 @@ router.get("/api/entry-page", async (request, response) => {
 
     let result = { };
     let hostname = request.hostname;
-    if ((await setting("trustProxy")) && request.headers["x-forwarded-host"]) {
-        hostname = request.headers["x-forwarded-host"];
+    if ((await setting("trustProxy")) && request.headers["status-forwarded-host"]) {
+        hostname = request.headers["status-forwarded-host"];
     }
 
     if (hostname in StatusPage.domainMappingList) {

@@ -202,7 +202,7 @@ let needSetup = false;
     app.get("/", async (request, response) => {
         let hostname = request.hostname;
         if (await setting("trustProxy")) {
-            const proxy = request.headers["x-forwarded-host"];
+            const proxy = request.headers["status-forwarded-host"];
             if (proxy) {
                 hostname = proxy;
             }
