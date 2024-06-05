@@ -33,6 +33,11 @@ router.get("/api/entry-page", async (request, response) => {
     if ((await setting("trustProxy")) && request.headers["status-forwarded-host"]) {
         hostname = request.headers["status-forwarded-host"];
     }
+    log.info("greeeds", "trustProxy: " + (await setting("trustProxy")));
+    log.info("greeeds", "status-forwarded-host: " + (request.headers["status-forwarded-host"]));
+    log.info("greeeds", "hostname: " + hostname);
+    log.info("greeeds", "domainMappingList: " + JSON.stringify(StatusPage.domainMappingList));
+    log.info("greeeds", "hostname in StatusPage.domainMappingList: " + (hostname in StatusPage.domainMappingList));
 
     if (hostname in StatusPage.domainMappingList) {
         result.type = "statusPageMatchedDomain";

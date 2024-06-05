@@ -209,6 +209,11 @@ let needSetup = false;
         }
 
         log.debug("entry", `Request Domain: ${hostname}`);
+        log.info("greeeds2", "trustProxy: " + (await setting("trustProxy")));
+        log.info("greeeds2", "status-forwarded-host: " + (request.headers["status-forwarded-host"]));
+        log.info("greeeds2", "hostname: " + hostname);
+        log.info("greeeds2", "domainMappingList: " + JSON.stringify(StatusPage.domainMappingList));
+        log.info("greeeds2", "hostname in StatusPage.domainMappingList: " + (hostname in StatusPage.domainMappingList));
 
         const uptimeKumaEntryPage = server.entryPage;
         if (hostname in StatusPage.domainMappingList) {
